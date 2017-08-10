@@ -32,7 +32,7 @@
     <select id="selectUserByNo" parameterType="int" resultType="com.mysite.vo.UserVo">
     
     <![CDATA[
-        select name, email,gender
+        select no,name, email,gender
         from users
         where no=#{no}
     

@@ -25,7 +25,7 @@ public class UserController {
 	@RequestMapping(value="/joinform",method=RequestMethod.GET)
 	public String joinform() {
 		
-		return "/joinform";
+		return "user/joinform";
 	}
 	
 	@RequestMapping(value="/join",method=RequestMethod.POST)
@@ -33,7 +33,7 @@ public class UserController {
 		
 		System.out.println(uservo.toString());
 		userService.join(uservo);
-		return"/user/joinsuccess";
+		return"user/joinsuccess";
 		
 	}
 	
@@ -43,7 +43,7 @@ public class UserController {
 	@RequestMapping(value="/loginform",method=RequestMethod.GET)
 	public String loginform() {
 		
-		return "/user/loginform";
+		return "user/loginform";
 	}
 	
 	
@@ -55,10 +55,10 @@ public class UserController {
 		
 		UserVo authUser=userService.getUser(email,password);
 		if(authUser!=null) {
-		session.setAttribute("authUser", authUser);//다른 패이지에서 이 값을 사용하기 위해
-		return "redirect:/main";
+			session.setAttribute("authUser", authUser);//다른 패이지에서 이 값을 사용하기 위해
+			return "redirect:/main";
 		}else {
-			return "redirect:/loginform?result=fail";
+			return "redirect:/user/loginform?result=fail";
 		}
 			
 	}
