@@ -18,6 +18,8 @@ public class UserService {
 		
 	}
 	
+	
+	
 	public UserVo getUser(String email, String password) {
 		
 		userDao.getUser(email,password);
@@ -26,12 +28,16 @@ public class UserService {
 		
 	}
 	
+	
+	
      public UserVo getUser(int no) {
 		
 		
 		return userDao.getUser(no);
 		
 	}
+     
+     
      
      public int updateUser(UserVo userVo) {
     	 return userDao.updateUser(userVo);

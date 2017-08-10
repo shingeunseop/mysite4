@@ -29,6 +29,8 @@
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 (open 되어 있는 요소는 tomcat에서 해결하라는 명령어)-->
     <mvc:default-servlet-handler />
     <mvc:annotation-driven/>
+    
+    
 
 </beans>
 

@@ -37,11 +37,17 @@ public class UserController {
 		
 	}
 	
+	
+	
+	
 	@RequestMapping(value="/loginform",method=RequestMethod.GET)
 	public String loginform() {
-		System.out.println("aaaaa");
+		
 		return "/user/loginform";
 	}
+	
+	
+	
 	
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login(@RequestParam("email") String email,@RequestParam("password") String password,
@@ -56,12 +62,19 @@ public class UserController {
 		}
 			
 	}
+	
+	
+	
+	
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("authUser");
 		session.invalidate();//두개의 라인을 잘 기억
 		return "redirect:/main";
 	}
+	
+	
+	
 	
 	@RequestMapping(value="/modifyform",method=RequestMethod.GET)//get주소로 오기 떄문에
 	public String modifyform(HttpSession session,Model model) {
@@ -71,12 +84,14 @@ public class UserController {
 		
 		
 		UserVo userVo=userService.getUser(no);
-		System.out.println(userVo.toString());
+		
 		model.addAttribute("UserVo",userVo);//밖으로 보일때는 "UserVo로 사용"
 		
 		
 		return "/user/modifyform";
 	}
+	
+	
 	
 	@RequestMapping(value="/modify",method=RequestMethod.GET)
 	public String modify(@ModelAttribute UserVo userVo,HttpSession session) {
