@@ -37,5 +37,10 @@ public class BoardDao {
 		return sqlSession.delete("board.delete",boardVo);
 		
 	}
+	
+	/*public String search(BoardVo boardVo) {
+		return sqlSession.selectList("board.search",boardVo);
+		
+	}*/
 
 }

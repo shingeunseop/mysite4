@@ -62,5 +62,18 @@
      
      </delete>
      
+     
+     
+     <select id="search" parameterType="String" resultType="com.mysite.vo.BoardVo">
+     <![CDATA[
+     select bo.no,title,us.name userName,bo.hit,bo.reg_Date regDate,bo.user_no userNo
+     from board bo,users us
+     where bo.user_no=us.no
+     order by no desc
+     
+     ]]>
+     
+     </select>
+     
 
 </mapper>

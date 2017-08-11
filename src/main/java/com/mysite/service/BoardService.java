@@ -34,5 +34,9 @@ public class BoardService {
 	public int getdelete(BoardVo boardVo) {
 		return boardDao.delete(boardVo);
 	}
+	
+	/*public String getsearch(BoardVo boardVo){
+		return boardDao.search(boardVo);
+	}*/
 
 }

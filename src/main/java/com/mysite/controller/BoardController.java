@@ -24,10 +24,10 @@ public class BoardController {
 	private BoardService boardService;
 
 	@RequestMapping(value = "/list")
-	public String list(@ModelAttribute BoardVo boardVo, Model model,Model model2) {
+	public String list(@ModelAttribute BoardVo boardVo, Model model) {
 
 		List<BoardVo> list = boardService.getlist(boardVo);
-		System.out.println(list.toString());
+		
 		
 		model.addAttribute("list", list);
 		
@@ -94,5 +94,14 @@ public class BoardController {
 
 		return "redirect:/board/list";
 	}
+	
+	/*@RequestMapping(value="/search",method=RequestMethod.POST)
+	public String search(@ModelAttribute BoardVo boardVo,Model model) {
+		
+		
+		boardService.getsearch(boardVo);
+		model.addAttribute("boardVo",boardVo);
+		return "redirect:/board/list";
+	}*/
 
 }
