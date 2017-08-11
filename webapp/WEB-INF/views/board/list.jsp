@@ -35,10 +35,10 @@
 							<td><a href="${pageContext.request.contextPath}/board/read?no=${vo.no }">${vo.title }</a></td>
 							<td>${vo.userName }</td>
 							<td>${vo.hit }</td>
-							<td>${vo.regDate }</td>
+							<td>${vo.regDate } </td>
 							<td>
 								<c:if test="${authUser.no == vo.userNo }">
-									<a href="${pageContext.request.contextPath}/board/delete?no=${vo.no }" class="del">삭제</a>
+										<a href="${pageContext.request.contextPath}/board/delete?no=${vo.no }" class="${pageContext.request.contextPath}/assets/images/delete.png">삭제</a>
 								</c:if>
 							</td>
 						</tr>

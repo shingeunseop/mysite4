@@ -19,61 +19,80 @@ import com.mysite.vo.UserVo;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-	
+
 	@Autowired
 	private BoardService boardService;
-	
-	
-	@RequestMapping(value="/list")
-	public String list(@ModelAttribute BoardVo boardVo,Model model){
+
+	@RequestMapping(value = "/list")
+	public String list(@ModelAttribute BoardVo boardVo, Model model,Model model2) {
+
+		List<BoardVo> list = boardService.getlist(boardVo);
+		System.out.println(list.toString());
 		
-		List<BoardVo> list=boardService.getlist(boardVo);
-		model.addAttribute("list",list);
-		
+		model.addAttribute("list", list);
 		
 		return "/board/list";
 	}
-	
-	@RequestMapping(value="/read")
-	public String read(BoardVo boardVo,@RequestParam("no") int no,Model model) {
-		boardVo.setNo(no);
-		boardVo=boardService.getread(no);
-		System.out.println(boardVo.toString());
-		model.addAttribute("boardVo",boardVo);
-		
-		return "/board/read";
-	}
-	
-	@RequestMapping(value="/writeform")
+
+	@RequestMapping(value = "/writeform")
 	public String writeform() {
-		
+
 		return "/board/writeform";
 	}
-	
-	@RequestMapping(value="/write",method=RequestMethod.POST)
-	public String write(@ModelAttribute //입력된 파라미터를 가져와라
-			BoardVo boardVo,HttpSession session) {
-		
+
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String write(@ModelAttribute // 입력된 파라미터를 가져와라
+	BoardVo boardVo, HttpSession session) {
+
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		int no = authUser.getNo();
 		System.out.println(boardVo.toString());
-		
-		
-		
+
 		boardVo.setUserNo(no);
-		
-		
-		
+
 		boardService.insert(boardVo);
-		
+
 		return "redirect:/board/list";
 	}
-	
-	@RequestMapping(value="/modifyform&no=${boardVo.no }")
-	public String modify() {
-		
-		
+
+	@RequestMapping(value = "/read")
+	public String read(BoardVo boardVo, UserVo userVo, HttpSession session, @RequestParam("no") int no, Model model) {
+		boardVo.setNo(no);
+		boardVo = boardService.getread(no);
+
+		System.out.println(boardVo.toString());
+
+		model.addAttribute("boardVo", boardVo);
+
+		return "/board/read";
+	}
+
+	@RequestMapping(value = "/modifyform")
+	public String modifyform(BoardVo boardVo, @RequestParam("no") int no, Model model) {
+
+		model.addAttribute("boardVo", boardVo);
 		return "/board/modifyform";
 	}
-	
+
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modify(@ModelAttribute BoardVo boardVo, @RequestParam("no") int no, Model model) {
+		boardVo.setNo(no);
+
+		boardService.getupdate(boardVo);
+
+		model.addAttribute("boardVo", boardVo);
+		return "redirect:/board/list";
+	}
+
+	@RequestMapping(value = "/delete")
+	public String delte(BoardVo boardVo,@RequestParam("no") int no,Model model) {
+		boardVo.setNo(no);
+		
+		boardService.getdelete(boardVo);
+		
+		model.addAttribute("boardVo", boardVo);
+
+		return "redirect:/board/list";
+	}
+
 }

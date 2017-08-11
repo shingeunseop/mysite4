@@ -27,5 +27,15 @@ public class BoardDao {
 		boardVo.toString();
 		return sqlSession.insert("board.insert",boardVo);
 	}
+	
+	public int update(BoardVo boardVo) {
+		return sqlSession.update("board.update",boardVo);
+		
+	}
+	
+	public int delete(BoardVo boardVo) {
+		return sqlSession.delete("board.delete",boardVo);
+		
+	}
 
 }

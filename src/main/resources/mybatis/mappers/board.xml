@@ -6,7 +6,7 @@
 
       <select id="list" parameterType="int" resultType="com.mysite.vo.BoardVo">
     <![CDATA[
-    select bo.no,title,us.name userName,bo.hit,bo.reg_Date regDate
+    select bo.no,title,us.name userName,bo.hit,bo.reg_Date regDate,bo.user_no userNo
     from board bo,users us
     where bo.user_no=us.no
     order by no desc
@@ -17,7 +17,7 @@
      
      <select id="read" parameterType="int" resultType="com.mysite.vo.BoardVo">
      <![CDATA[
-     select title,content
+     select no,title,content,user_no userNo
      from board
      where no=#{no}
      
@@ -36,7 +36,31 @@
      
      ]]>
           
-     
      </insert>
+     
+     
+     <update id="update" parameterType="com.mysite.vo.BoardVo">
+     <![CDATA[
+     update board
+     set title=#{title},
+         content=#{content}
+     where no=#{no}
+     
+     
+     ]]>
+     
+     
+     </update>
+     
+     <delete id="delete" parameterType="com.mysite.vo.BoardVo">
+     <![CDATA[
+     delete from board
+     where no=${no}
+          
+     ]]>
+     
+     
+     </delete>
+     
 
 </mapper>

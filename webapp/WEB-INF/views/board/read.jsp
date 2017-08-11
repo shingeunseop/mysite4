@@ -31,15 +31,15 @@
 							<div class="view-content">
 								
 								${boardVo.content}
+								
 							</div>
 						</td>
 					</tr>
-				</table>
-				<div class="bottom">
+				</table>		<div class="bottom">
 					<a href="${pageContext.request.contextPath}/board/list">글목록</a>
 					
-					<c:if test="${authUser.no == vo.userNo }">
-						<a href="${pageContext.request.contextPath}/board?a=modifyform&no=${boardVo.no }">글수정</a>
+					<c:if test="${authUser.no == boardVo.userNo }">
+						<a href="${pageContext.request.contextPath}/board/modifyform?no=${boardVo.no }">글수정</a>
 					</c:if>
 				</div>
 			</div>
