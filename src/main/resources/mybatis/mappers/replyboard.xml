@@ -40,6 +40,25 @@
      ]]>
           
      </insert>
+     
+      <insert id="datinsert" parameterType="com.mysite.vo.ReplyBoardVo">
+     <![CDATA[
+     insert into replyboard
+     values(seq_replyboard_no.nextval,
+            #{title},
+            #{content},
+            0,
+            sysdate,
+            #{userNo},
+            #{groupNo},
+            #{orderNo},
+            #{depthNo})
+     
+     
+     ]]>
+          
+     </insert>
+     
 
 
 </mapper>

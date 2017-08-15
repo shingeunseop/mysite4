@@ -26,4 +26,8 @@ public class ReplyBoardService {
 	public int insert(ReplyBoardVo rbv) {
 		return rbd.insert(rbv);
 	}
+	
+	public int datinsert(ReplyBoardVo rbv) {
+		return rbd.datinsert(rbv);
+	}
 }

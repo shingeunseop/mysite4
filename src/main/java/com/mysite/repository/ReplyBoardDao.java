@@ -28,6 +28,10 @@ public class ReplyBoardDao {
 		return sqlSession.insert("replyboard.insert",rbv);
 	}
 	
+	public int datinsert(ReplyBoardVo rbv) {
+		rbv.toString();
+		return sqlSession.insert("replyboard.datinsert",rbv);
+	}
 	
 
 }

@@ -77,12 +77,21 @@ public class ReplyBoardController {
 	}
 	
 	@RequestMapping(value ="/writedat", method = RequestMethod.POST)
-	public String writedat(@ModelAttribute // 입력된 파라미터를 가져와라
-			ReplyBoardVo rbv, HttpSession session) {
+	public String writedat(@ModelAttribute ReplyBoardVo rbv,@RequestParam("groupNo") int groupNo,
+			@RequestParam("orderNo") int orderNo,@RequestParam("depthNo") int depthNo,HttpSession session,Model model) {
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		int no = authUser.getNo();
 		System.out.println(rbv.toString());
+		
+		rbv.setUserNo(no);
+		rbv.setGroupNo(groupNo);
+		rbv.setOrderNo(orderNo);
+		rbv.setDepthNo(depthNo);
+		
+		rbs.datinsert(rbv);
+		
+		model.addAttribute(rbv);
 
 		
 		return "redirect:/replyboard/list";
