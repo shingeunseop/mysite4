@@ -11,7 +11,7 @@
     ,groupNo,orderNo,depthNo
     from replyboard bo,users us
     where bo.user_no=us.no
-    order by no desc
+    order by groupNo desc,orderNo asc
     
     ]]>
      </select>
@@ -52,8 +52,11 @@
             #{userNo},
             #{groupNo},
             #{orderNo},
-            #{depthNo})
-     
+            #{depthNo+1})
+     update replyboard
+     set orderNo=orderNo+1
+     where groupNo=#{groupNo}
+     and orderNo=#{orderNo}
      
      ]]>
           
