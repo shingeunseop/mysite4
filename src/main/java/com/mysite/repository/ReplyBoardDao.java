@@ -41,5 +41,11 @@ public class ReplyBoardDao {
 		return sqlSession.delete("replyboard.delete",rbv);
 		
 	}
+	
+	public int update(ReplyBoardVo rbv) {
+		return sqlSession.update("replyboard.update",rbv);
+		
+	}
+
 
 }

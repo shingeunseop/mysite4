@@ -74,12 +74,26 @@
        <delete id="delete" parameterType="com.mysite.vo.ReplyBoardVo">
      <![CDATA[
      delete from replyboard
-     where no=${no}
+     where groupNo=#{groupNo}
+     and orderNo>=#{orderNo}
           
      ]]>
      
      
      </delete>
+     
+      <update id="update" parameterType="com.mysite.vo.ReplyBoardVo">
+     <![CDATA[
+     update replyboard
+     set title=#{title},
+         content=#{content}
+     where no=#{no}
+     
+     
+     ]]>
+     
+     
+     </update>
      
 
 

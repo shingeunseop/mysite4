@@ -16,7 +16,8 @@
 		
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post" action="${pageContext.request.contextPath}/replyboard/writedat?groupNo=${rbv.groupNo}&orderNo=${rbv.orderNo}&depthNo=${rbv.depthNo}">
+				<form class="board-form" method="post" action="${pageContext.request.contextPath}/replyboard/writedat?groupNo=${rbv.groupNo}
+				&orderNo=${rbv.orderNo}&depthNo=${rbv.depthNo}">
 					
 					<table class="tbl-ex">
 						<tr>

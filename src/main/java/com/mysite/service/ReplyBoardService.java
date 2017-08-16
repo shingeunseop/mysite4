@@ -40,4 +40,8 @@ public class ReplyBoardService {
 		return rbd.delete(rbv);
 	}
 	
+	public int getupdate(ReplyBoardVo rbv) {
+		return rbd.update(rbv);
+	}
+	
 }

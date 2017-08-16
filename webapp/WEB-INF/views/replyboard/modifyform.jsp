@@ -16,8 +16,8 @@
 		
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post" action="${pageContext.request.contextPath}/board/modify">
-					<input type="hidden" name="no" value="${boardVo.no}" />
+				<form class="board-form" method="post" action="${pageContext.request.contextPath}/replyboard/modify">
+					<input type="hidden" name="no" value="${rbv.no}" />
 				
 					<table class="tbl-ex">
 						<tr>
@@ -25,18 +25,18 @@
 						</tr>
 						<tr>
 							<td class="label">제목</td>
-							<td><input type="text" name="title" value="${boardVo.title}"></td>
+							<td><input type="text" name="title" value="${rbv.title}"></td>
 						</tr>
 						<tr>
 							<td class="label">내용</td>
 							<td>
-								<textarea id="content" name="content">${boardVo.content}</textarea>
+								<textarea id="content" name="content">${rbv.content}</textarea>
 							</td>
 						</tr>
 					</table>
 				
 					<div class="bottom">
-						<a href="${pageContext.request.contextPath}/board/list">취소</a>
+						<a href="${pageContext.request.contextPath}/replyboard/list">취소</a>
 						<input type="submit" value="수정">
 					</div>
 				</form>				

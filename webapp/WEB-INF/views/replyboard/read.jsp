@@ -43,7 +43,8 @@
 					</c:if>
 					
 				<c:if test="${authUser != null }">
-							<a href="${pageContext.request.contextPath}/replyboard/datform?groupNo=${rbv.groupNo}&orderNo=${rbv.orderNo}&depthNo=${rbv.depthNo}"
+							<a href="${pageContext.request.contextPath}/replyboard/datform?groupNo=${rbv.groupNo}&orderNo=${rbv.orderNo}
+							&no=${rbv.no}"
 							 id="new-book">댓글</a>
 				</c:if>			
 					

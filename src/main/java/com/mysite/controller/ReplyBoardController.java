@@ -76,12 +76,9 @@ public class ReplyBoardController {
 	}
 	
 	@RequestMapping(value = "/datform")
-	public String datform(ReplyBoardVo rbv,@RequestParam("groupNo") int groupNo,@RequestParam("orderNo") int orderNo
-			,@RequestParam("depthNo") int depthNo,Model model) {
+	public String datform(@ModelAttribute ReplyBoardVo rbv,Model model) {
 		
-		rbv.setGroupNo(groupNo);
-		rbv.setOrderNo(orderNo);
-		rbv.setDepthNo(depthNo);
+		
 		
 		System.out.println(rbv.toString());
 
@@ -112,8 +109,9 @@ public class ReplyBoardController {
 	}
 	
 	@RequestMapping(value = "/delete")
-	public String delte(ReplyBoardVo rbv,@RequestParam("no") int no,Model model) {
-		rbv.setNo(no);
+	public String delte(ReplyBoardVo rbv,@RequestParam("groupNo") int groupNo,@RequestParam("orderNo") int orderNo,Model model) {
+		rbv.setGroupNo(groupNo);
+		rbv.setOrderNo(orderNo);
 		
 		rbs.getdelete(rbv);
 		
@@ -121,7 +119,24 @@ public class ReplyBoardController {
 
 		return "redirect:/replyboard/list";
 	}
-	
-	
+	@RequestMapping(value = "/modifyform")
+	public String modifyform(ReplyBoardVo rbv, @RequestParam("no") int no, Model model) {
+		
+		rbv.setNo(no);
+
+		model.addAttribute("rbv", rbv);
+		return "/replyboard/modifyform";
+	}
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modify(@ModelAttribute ReplyBoardVo rbv, @RequestParam("no") int no) {
+		rbv.setNo(no);
+		System.out.println(rbv.toString());
+
+		rbs.getupdate(rbv);
+		
+
+		
+		return "redirect:/replyboard/list";
+	}
 
 }
