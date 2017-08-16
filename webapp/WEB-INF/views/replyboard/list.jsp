@@ -32,7 +32,7 @@
 					<c:forEach items="${list }" var="vo">
 						<tr>
 							<td>${vo.no }</td>
-							<td><a href="${pageContext.request.contextPath}/replyboard/read?no=${vo.no }">${vo.title }</a></td>
+							<td><a href="${pageContext.request.contextPath}/replyboard/read?no=${vo.no }&groupNo=${vo.groupNo}&orderNo=${vo.orderNo}&depthNo=${vo.depthNo}">${vo.title }</a></td>
 							<td>${vo.userName }</td>
 							<td>${vo.hit }</td>
 							<td>${vo.regDate }</td>

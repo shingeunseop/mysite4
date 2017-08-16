@@ -28,6 +28,7 @@ public class ReplyBoardController {
 	public String list(@ModelAttribute ReplyBoardVo rbv, Model model) {
 		
 		List<ReplyBoardVo> list = rbs.getlist(rbv);
+		
 				
 		model.addAttribute("list", list);
 		
@@ -36,11 +37,17 @@ public class ReplyBoardController {
 	}
 	
 	@RequestMapping(value = "/read")
-	public String read(ReplyBoardVo rbv, UserVo userVo, HttpSession session, @RequestParam("no") int no, Model model) {
+	public String read(ReplyBoardVo rbv, HttpSession session, @RequestParam("no") int no,
+			@RequestParam("groupNo") int groupNo,@RequestParam("orderNo") int orderNo
+			,@RequestParam("depthNo") int depthNo,Model model) {
+		
 		rbv.setNo(no);
+		rbv.setGroupNo(groupNo);
+		rbv.setOrderNo(orderNo);
+		rbv.setDepthNo(depthNo);
 		rbv = rbs.getread(no);
 
-		System.out.println(rbv.toString());
+		
 
 		model.addAttribute("rbv", rbv);
 
@@ -59,8 +66,7 @@ public class ReplyBoardController {
 
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		int no = authUser.getNo();
-		System.out.println(rbv.toString());
-
+		
 		rbv.setUserNo(no);
 
 		rbs.insert(rbv);
@@ -70,26 +76,34 @@ public class ReplyBoardController {
 	}
 	
 	@RequestMapping(value = "/datform")
-	public String datform(@RequestParam("groupNo") int groupNo,Model model) {
-
-		model.addAttribute("groupNo",groupNo);
-		return "/replyboard/datform";
-	}
-	
-	@RequestMapping(value ="/writedat", method = RequestMethod.POST)
-	public String writedat(@ModelAttribute ReplyBoardVo rbv,@RequestParam("groupNo") int groupNo,
-			@RequestParam("orderNo") int orderNo,@RequestParam("depthNo") int depthNo,HttpSession session,Model model) {
-
-		UserVo authUser = (UserVo) session.getAttribute("authUser");
-		int no = authUser.getNo();
-		System.out.println(rbv.toString());
+	public String datform(ReplyBoardVo rbv,@RequestParam("groupNo") int groupNo,@RequestParam("orderNo") int orderNo
+			,@RequestParam("depthNo") int depthNo,Model model) {
 		
-		rbv.setUserNo(no);
 		rbv.setGroupNo(groupNo);
 		rbv.setOrderNo(orderNo);
 		rbv.setDepthNo(depthNo);
 		
-		rbs.datinsert(rbv);
+		System.out.println(rbv.toString());
+
+		model.addAttribute("rbv",rbv);
+		
+		return "/replyboard/datform";
+	}
+	
+	@RequestMapping(value ="/writedat", method = RequestMethod.POST)
+	public String writedat(@ModelAttribute ReplyBoardVo rbv,HttpSession session,Model model) {
+		
+		
+
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		int no = authUser.getNo();
+		
+		
+		rbv.setUserNo(no);
+		
+		
+		rbs.datwrite(rbv);
+		
 		
 		model.addAttribute(rbv);
 
@@ -97,7 +111,16 @@ public class ReplyBoardController {
 		return "redirect:/replyboard/list";
 	}
 	
-	
+	@RequestMapping(value = "/delete")
+	public String delte(ReplyBoardVo rbv,@RequestParam("no") int no,Model model) {
+		rbv.setNo(no);
+		
+		rbs.getdelete(rbv);
+		
+		model.addAttribute("rbv", rbv);
+
+		return "redirect:/replyboard/list";
+	}
 	
 	
 

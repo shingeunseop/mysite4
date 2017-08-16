@@ -23,23 +23,23 @@
 					</tr>
 					<tr>
 						<td class="label">제목</td>
-						<td>${boardVo.title }</td>
+						<td>${rbv.title }</td>
 					</tr>
 					<tr>
 						<td class="label">내용</td>
 						<td>
 							<div class="view-content">
 								
-								${boardVo.content}
+								${rbv.content}
 								
 							</div>
 						</td>
 					</tr>
 				</table>		<div class="bottom">
-					<a href="${pageContext.request.contextPath}/board/list">글목록</a>
+					<a href="${pageContext.request.contextPath}/replyboard/list">글목록</a>
 					
-					<c:if test="${authUser.no == boardVo.userNo }">
-						<a href="${pageContext.request.contextPath}/board/modifyform?no=${boardVo.no }">글수정</a>
+					<c:if test="${authUser.no == rbv.userNo }">
+						<a href="${pageContext.request.contextPath}/replyboard/modifyform?no=${rbv.no }">글수정</a>
 					</c:if>
 					
 				<c:if test="${authUser != null }">

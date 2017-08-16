@@ -19,7 +19,7 @@
         
      <select id="read" parameterType="int" resultType="com.mysite.vo.ReplyBoardVo">
      <![CDATA[
-     select no,title,content,user_no userNo
+     select no,title,content,user_no userNo,groupNo,orderNo,depthNo
      from replyboard
      where no=#{no}
      ]]>
@@ -52,15 +52,34 @@
             #{userNo},
             #{groupNo},
             #{orderNo},
-            #{depthNo+1})
+            #{depthNo})
+         
+     ]]>
+          
+     </insert>
+     
+     <update id="datupdate" parameterType="com.mysite.vo.ReplyBoardVo">
+     <![CDATA[
+     
      update replyboard
      set orderNo=orderNo+1
      where groupNo=#{groupNo}
      and orderNo=#{orderNo}
      
+     
      ]]>
+     
+     </update>
+     
+       <delete id="delete" parameterType="com.mysite.vo.ReplyBoardVo">
+     <![CDATA[
+     delete from replyboard
+     where no=${no}
           
-     </insert>
+     ]]>
+     
+     
+     </delete>
      
 
 

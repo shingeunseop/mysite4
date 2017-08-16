@@ -27,7 +27,17 @@ public class ReplyBoardService {
 		return rbd.insert(rbv);
 	}
 	
-	public int datinsert(ReplyBoardVo rbv) {
+	public int datwrite(ReplyBoardVo rbv) {
+		
+		rbv.setDepthNo(rbv.getDepthNo()+1);
+		rbv.setOrderNo(rbv.getOrderNo()+1);
+		rbd.datupdate(rbv);
+		
+		
 		return rbd.datinsert(rbv);
 	}
+	public int getdelete(ReplyBoardVo rbv) {
+		return rbd.delete(rbv);
+	}
+	
 }

@@ -33,5 +33,13 @@ public class ReplyBoardDao {
 		return sqlSession.insert("replyboard.datinsert",rbv);
 	}
 	
+	public int datupdate(ReplyBoardVo rbv) {
+		rbv.toString();
+		return sqlSession.insert("replyboard.datupdate",rbv);
+	}
+	public int delete(ReplyBoardVo rbv) {
+		return sqlSession.delete("replyboard.delete",rbv);
+		
+	}
 
 }

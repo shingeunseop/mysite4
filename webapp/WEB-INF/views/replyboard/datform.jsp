@@ -16,8 +16,8 @@
 		
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post" action="${pageContext.request.contextPath}/replyboard/writedat">
-					<input type="hidden" name="groupNo" value="${rbv.groupNo}" />
+				<form class="board-form" method="post" action="${pageContext.request.contextPath}/replyboard/writedat?groupNo=${rbv.groupNo}&orderNo=${rbv.orderNo}&depthNo=${rbv.depthNo}">
+					
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>
