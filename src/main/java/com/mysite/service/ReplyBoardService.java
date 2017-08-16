@@ -30,12 +30,15 @@ public class ReplyBoardService {
 	public int datwrite(ReplyBoardVo rbv) {
 		
 		rbv.setDepthNo(rbv.getDepthNo()+1);
+		
 		rbv.setOrderNo(rbv.getOrderNo()+1);
 		rbd.datupdate(rbv);
 		
 		
 		return rbd.datinsert(rbv);
 	}
+	
+	
 	public int getdelete(ReplyBoardVo rbv) {
 		return rbd.delete(rbv);
 	}

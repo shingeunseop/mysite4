@@ -28,6 +28,9 @@ public class ReplyBoardDao {
 		return sqlSession.insert("replyboard.insert",rbv);
 	}
 	
+	
+	
+	
 	public int datinsert(ReplyBoardVo rbv) {
 		rbv.toString();
 		return sqlSession.insert("replyboard.datinsert",rbv);
@@ -37,6 +40,9 @@ public class ReplyBoardDao {
 		rbv.toString();
 		return sqlSession.insert("replyboard.datupdate",rbv);
 	}
+	
+	
+	
 	public int delete(ReplyBoardVo rbv) {
 		return sqlSession.delete("replyboard.delete",rbv);
 		

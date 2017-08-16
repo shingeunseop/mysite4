@@ -71,6 +71,8 @@
      
      </update>
      
+     
+     
        <delete id="delete" parameterType="com.mysite.vo.ReplyBoardVo">
      <![CDATA[
      delete from replyboard

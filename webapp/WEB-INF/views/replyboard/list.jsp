@@ -38,9 +38,19 @@
 							<td>${vo.no }</td>
 							<td style="text-align: left;">
 							
+							
+							
 								<c:if test="${vo.orderNo!=1}">
-							   		<img id="reply" src="${pageContext.request.contextPath}/assets/images/reply.png">
+								
+								<c:forEach var="i" begin="1" end= "${vo.depthNo}" step="1">
+								
+								        <img id="reply" src="${pageContext.request.contextPath}/assets/images/reply.png">
+								</c:forEach>
+								
+							   		
+								
 								</c:if> 
+																
 								
 								
 								<a href="${pageContext.request.contextPath}/replyboard/read?no=${vo.no }&groupNo=${vo.groupNo}&orderNo=${vo.orderNo}&depthNo=${vo.depthNo}">								
