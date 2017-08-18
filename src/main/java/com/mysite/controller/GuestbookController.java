@@ -19,6 +19,12 @@ public class GuestbookController {
 
 	@Autowired
 	private GuestbookService guestbookService;
+	
+	@RequestMapping(value="/list-ajax",method=RequestMethod.GET)
+	public String listAjax() {
+		return "guestbook/list-ajax";
+	}
+	
 
 	@RequestMapping(value="/list")
 	public String list(@ModelAttribute GuestbookVo guestbookvo,Model model) {
