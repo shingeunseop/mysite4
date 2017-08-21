@@ -58,6 +58,16 @@
     
     
     </update>
+    
+    <select id="doublecheck" parameterType="com.mysite.vo.UserVo" resultType="int">
+    <![CDATA[
+    select no
+    from users
+    where email=#{email}    
+    
+    ]]>
+    
+    </select>
 
           
 </mapper>

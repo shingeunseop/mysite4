@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="${pageContext.request.contextPath}/assets/css/user.css" rel="stylesheet" type="text/css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <title>Mysite</title>
 </head>
 <body>
@@ -26,7 +28,11 @@
 	
 						<label class="block-label" for="email">이메일</label>
 						<input id="email" name="email" type="text" value="" />
-						<input type="button" value="id 중복체크">
+						<ul id="double_check">
+						
+						</ul>
+						<input id="doublecheck" type="button" value="id 중복체크">
+						
 						
 						<label class="block-label">패스워드</label>
 						<input name="password" type="password" value="" />
@@ -55,5 +61,54 @@
 		
 	</div><!-- /container -->
 </body>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#doublecheck").click(function(){
+		event.preventDefault();
+		console.log("전송완료");
+		var email=$("[name=email]").val();
+		var no;
+		
+	
+	
+	
+
+	$.ajax({
+	     url : "${pageContext.request.contextPath }/user/doublecheck",
+	     type : "post",//데이터 형식
+	     /*contentType : "application/json",*/
+	    data :{
+	    	
+	    	email : email
+	    },//데이터 보내는 곳
+
+
+	      dataType : "json",//json으로 받는다.
+	      success : function(no){//데이터 받는 곳
+	    	  console.log(no);
+	    	  if(no!=0){
+	    		  console.log("사용불가능");
+	    		  
+	    	  }else{
+	    		  console.log("사용가능");
+	    	  }
+	      /*성공시 처리해야될 코드 작성*/},
+
+	      error : function(XHR, status, error) {
+	      console.error(status + " : " + error);
+
+	}
+
+
+	});
+	 
+});
+});
+
+
+
+
+</script>
 </html>		
 		

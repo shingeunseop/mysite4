@@ -40,6 +40,10 @@ public class UserService {
      public int updateUser(UserVo userVo) {
     	 return userDao.updateUser(userVo);
      }
+     
+     public int doublecheck(UserVo userVo) {
+    	 return userDao.doublecheck(userVo);
+     }
 
 
 }

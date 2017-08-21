@@ -41,5 +41,11 @@ public class UserDao {
     	
     	 return sqlSession.update("user.update",userVo);
      }
+     
+     public int doublecheck(UserVo userVo) {
+    	 
+    	
+    	 return sqlSession.selectOne("user.doublecheck",userVo);
+     }
 
 }

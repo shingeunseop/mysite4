@@ -24,6 +24,13 @@ public class GuestbookService {
 		return guestbookDao.insert(guestbookVo);
 	}
 	
+	public GuestbookVo insertVo(GuestbookVo guestbookVo) {
+		int no=guestbookDao.insertVo(guestbookVo);//no를 가져온 다음에
+		guestbookVo=guestbookDao.selectByNo(no);
+		
+		return guestbookVo;
+	}
+	
 	public int delete(GuestbookVo vo) {
 		return guestbookDao.delete(vo);
 	}
