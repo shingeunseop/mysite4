@@ -64,46 +64,38 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+	
 	$("#doublecheck").click(function(){
 		event.preventDefault();
 		console.log("전송완료");
 		var email=$("[name=email]").val();
 		var no;
 		
+		$.ajax({
+			url : "${pageContext.request.contextPath }/user/doublecheck",
+		    type : "post",//데이터 형식
+		     /*contentType : "application/json",*/
+		    data :{email : email},//데이터 보내는 곳
+		    dataType : "json",//json으로 받는다.
+		    success : function(no) {//데이터 받는 곳
+		    	console.log(no);
+		    	if(no!=0){
+		    		
+		    		$("#double_check").html("이미 존재합니다.");
+		    	}else{
+		    		
+		    		$("#double_check").html("사용 가능합니다.");
+		    	}
+		    },
+		    error : function(XHR, status, error) {
+		      	console.error(status + " : " + error);
+			}
+		    
+		});
+		
 	
-	
-	
-
-	$.ajax({
-	     url : "${pageContext.request.contextPath }/user/doublecheck",
-	     type : "post",//데이터 형식
-	     /*contentType : "application/json",*/
-	    data :{
-	    	
-	    	email : email
-	    },//데이터 보내는 곳
-
-
-	      dataType : "json",//json으로 받는다.
-	      success : function(no){//데이터 받는 곳
-	    	  console.log(no);
-	    	  if(no!=0){
-	    		  console.log("사용불가능");
-	    		  
-	    	  }else{
-	    		  console.log("사용가능");
-	    	  }
-	      /*성공시 처리해야될 코드 작성*/},
-
-	      error : function(XHR, status, error) {
-	      console.error(status + " : " + error);
-
-	}
-
-
 	});
-	 
-});
+	
 });
 
 
