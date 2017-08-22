@@ -42,10 +42,11 @@ public class UserDao {
     	 return sqlSession.update("user.update",userVo);
      }
      
-     public int doublecheck(UserVo userVo) {
+     public UserVo doublecheck(String email) {
+    	 UserVo userVo=sqlSession.selectOne("user.doublecheck",email);
     	 
     	
-    	 return sqlSession.selectOne("user.doublecheck",userVo);
+    	 return userVo;
      }
 
 }

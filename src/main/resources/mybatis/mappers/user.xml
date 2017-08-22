@@ -59,9 +59,9 @@
     
     </update>
     
-    <select id="doublecheck" parameterType="com.mysite.vo.UserVo" resultType="int">
+    <select id="doublecheck" parameterType="String" resultType="com.mysite.vo.UserVo">
     <![CDATA[
-    select no
+    select email
     from users
     where email=#{email}    
     

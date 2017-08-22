@@ -111,12 +111,10 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value="/doublecheck",method=RequestMethod.POST)
-	public int doublecheck(@ModelAttribute UserVo userVo) {
+	public boolean doublecheck(@RequestParam("email") String email) {
 		
-		int no=userService.doublecheck(userVo);
-		
-			 
-		return no;
+				 
+		return userService.doublecheck(email);
 	}
 	
 	

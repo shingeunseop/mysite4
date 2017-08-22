@@ -77,9 +77,9 @@ $(document).ready(function(){
 		     /*contentType : "application/json",*/
 		    data :{email : email},//데이터 보내는 곳
 		    dataType : "json",//json으로 받는다.
-		    success : function(no) {//데이터 받는 곳
-		    	console.log(no);
-		    	if(no!=0){
+		    success : function(mail) {//데이터 받는 곳
+		    	console.log(mail);
+		    	if(mail==true){
 		    		
 		    		$("#double_check").html("이미 존재합니다.");
 		    	}else{

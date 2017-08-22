@@ -59,5 +59,11 @@ public class GuestbookController {
 		return "redirect:/guestbook/list";
 	}
 	
+	@RequestMapping(value="/bootstrap")
+	public String bootstrap() {
+		
+		return "/guestbook/bootstrap";
+	}
+	
 
 }

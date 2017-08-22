@@ -41,8 +41,17 @@ public class UserService {
     	 return userDao.updateUser(userVo);
      }
      
-     public int doublecheck(UserVo userVo) {
-    	 return userDao.doublecheck(userVo);
+     public boolean doublecheck(String email) {
+    	 boolean mail;
+    	 UserVo userVo=userDao.doublecheck(email);
+    	 
+    	 
+    	 if(userVo!=null) {
+    		 mail=true;
+    	 }else {
+    		 mail=false;
+    	 }
+    	 return  mail;
      }
 
 
