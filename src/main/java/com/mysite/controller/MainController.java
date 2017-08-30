@@ -15,5 +15,10 @@ public class MainController {
 	
 //1번 ppt의 맨 마지막줄에 있는 spring의 서블릿을 넣어줘야 css가 main에 적용된다.
 	
+	@RequestMapping(value="/main/search")
+	public String search() {
+		return "main/search";
+	}
+	
 
 }
